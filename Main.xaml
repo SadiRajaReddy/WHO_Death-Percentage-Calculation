@@ -1,0 +1,362 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:euhe="clr-namespace:Element5_Core.Utils.Hooks.Execution_Hooks;assembly=Element5.Core" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_SummaryResultData" Type="InOutArgument(njl:JObject)" />
+    <x:Property Name="io_MetaData" Type="InOutArgument(scg:List(njl:JObject))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2681.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="38">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>Element5_Core.Utils.Hooks.Execution_Hooks</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>Element5.Core</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="*Name: WHO_COVID-19 Report &#xA;*Purpose: To filter data extracted from WHO_COVID-19 data table and extracting of data the Worldmeter  Portal and to prepare the report of New cases and Deaths.&#xA;*Author: Sadi RajaReddy&#xA;*Error Codes: &#xA;           Portal:  WHO_COVID Portal  &amp; Worldmeter Portal&#xA;           Default: Generic Errors" DisplayName=" WHO COVID_19_Report" sap:VirtualizedContainerService.HintSize="885.333333333333,2616.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="njl:JProperty" Name="FailCount" />
+      <Variable x:TypeArguments="njl:JProperty" Name="SkipCount" />
+      <Variable x:TypeArguments="njl:JObject" Name="SummaryResultData" />
+      <Variable x:TypeArguments="ss:SecureString" Default="[(new System.net.NetworkCredential(&quot;&quot;,&quot;HkSeS1mgm00d&quot;).SecurePassword)]" Name="HookPassword" />
+      <Variable x:TypeArguments="ui:BusinessRuleException" sap2010:Annotation.AnnotationText="Used during transitions between states and represents a situation that does not conform to the rules of the process being automated." Name="BusinessException" />
+      <Variable x:TypeArguments="x:String" Name="ClientName" />
+      <Variable x:TypeArguments="x:String" Name="DeepLink" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_TransactionData" />
+      <Variable x:TypeArguments="njl:JObject" Name="FlowConfig" />
+      <Variable x:TypeArguments="x:String" Default="https://api-dev.e5.ai" Name="HookURL" />
+      <Variable x:TypeArguments="x:String" Default="botadmin@e5-training.ai" Name="HookUserName" />
+      <Variable x:TypeArguments="x:String" Name="ProcessIdentifier" />
+      <Variable x:TypeArguments="x:String" Default="WHO Death Percentage Calculation" Name="ProcessName" />
+      <Variable x:TypeArguments="njl:JArray" Name="ResultArray" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="SummaryFieldNames" />
+      <Variable x:TypeArguments="njl:JObject" Name="SummaryResult1" />
+      <Variable x:TypeArguments="x:String" Default="WHO Death Percentage Calculation" Name="TaskName" />
+      <Variable x:TypeArguments="x:String" Name="TaskRunIdentifier" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="TaskRunJson" />
+      <Variable x:TypeArguments="ui:QueueItem" sap2010:Annotation.AnnotationText="Transaction item to be processed. The type of this variable can be changed to match the transaction type in the process. For example, when processing data from a spreadsheet that is read into a DataTable, this type can be changed to DataRow. " Name="TransactionItem" />
+      <Variable x:TypeArguments="x:String" Name="UploadID">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String" Value="" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="scg:List(njl:JObject)" Name="MetaData" />
+      <Variable x:TypeArguments="njl:JProperty" Name="SuccessCount" />
+      <Variable x:TypeArguments="njl:JProperty" Name="TotalCount" />
+      <Variable x:TypeArguments="x:String" Name="NewDeath" />
+      <Variable x:TypeArguments="x:String" Name="PercentageOfNewCases" />
+      <Variable x:TypeArguments="x:String" Name="PercenatgeOfNewDeath" />
+      <Variable x:TypeArguments="x:String" Name="TotalDeaths" />
+      <Variable x:TypeArguments="x:String" Name="NewCases" />
+      <Variable x:TypeArguments="x:String" Name="TotalCases" />
+      <Variable x:TypeArguments="x:String" Name="CountryName" />
+      <Variable x:TypeArguments="x:String" Name="Type" />
+      <Variable x:TypeArguments="x:String" Name="variable1" />
+      <Variable x:TypeArguments="x:String" Name="Reason" />
+      <Variable x:TypeArguments="x:String" Name="Status" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Out_DT" />
+      <Variable x:TypeArguments="njl:JObject" Name="Out_JSON" />
+      <Variable x:TypeArguments="x:String" Name="OutUrlValue" />
+      <Variable x:TypeArguments="x:String" Name="IsFilteredTable" />
+      <Variable x:TypeArguments="x:String" Name="Out_FileLocation" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="843.333333333333,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Begin Execution &quot;]" />
+    <Sequence DisplayName="Assign Data For AutomationHub and Initiate Automation Hub Job Run" sap:VirtualizedContainerService.HintSize="843.333333333333,1332" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:MultipleAssign DisplayName="Assigning Data to Automation" sap:VirtualizedContainerService.HintSize="431.333333333333,252.666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:List(njl:JObject)">[MetaData]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:List(njl:JObject)">[new List(of JObject)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JProperty">[TotalCount]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JProperty">[new Newtonsoft.Json.Linq.JProperty("Total","0")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JProperty">[SuccessCount]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JProperty">[new Newtonsoft.Json.Linq.JProperty("Success","0")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JProperty">[FailCount]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JProperty">[new Newtonsoft.Json.Linq.JProperty("Failed","0")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JProperty">[SkipCount]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JProperty">[new Newtonsoft.Json.Linq.JProperty("Skipped","0")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="njl:JObject">[SummaryResultData]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="njl:JObject">[new JObject(TotalCount,SuccessCount,FailCount,SkipCount)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <euhe:Begin_Task_Execution sap2010:Annotation.AnnotationText="Begining the  Task Automation " ClientName="[ClientName]" DeepLink="[DeepLink]" DisplayName="Job Run Initiation - Automation Hub" FlowConfig="[FlowConfig]" sap:VirtualizedContainerService.HintSize="431.333333333333,380.666666666667" HookPassword="[HookPassword]" HookURL="[HookURL]" HookUserName="[HookUserName]" sap2010:WorkflowViewState.IdRef="Begin_Task_Execution_1" ProcessIdentifier="[ProcessIdentifier]" ProcessName="[ProcessName]" SummaryFieldNames="[SummaryFieldNames]" TaskName="[TaskName]" TaskRunIdentifier="[TaskRunIdentifier]" __Prefix="[IO.Directory.GetCurrentDirectory]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </euhe:Begin_Task_Execution>
+      <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Getting the path value" AssetName="[FlowConfig(&quot;UrlKey&quot;).ToString]" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="431.333333333333,170" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+        <ui:GetRobotAsset.Value>
+          <OutArgument x:TypeArguments="x:String">[OutUrlValue]</OutArgument>
+        </ui:GetRobotAsset.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:GetRobotAsset>
+      <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="To get the File location&#xA;" AssetName="[FlowConfig(&quot;FileLocation&quot;).ToString]" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="431.333333333333,183.333333333333" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+        <ui:GetRobotAsset.Value>
+          <OutArgument x:TypeArguments="x:String">[Out_FileLocation]</OutArgument>
+        </ui:GetRobotAsset.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:GetRobotAsset>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431.333333333333,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Data Asssigned&quot;]" />
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="843.333333333333,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Reading data from the  COVID_19 DataTable  started &quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="843.333333333333,113.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="WHO_DeathPercentageCalculation\\WHO_DeathPercentageCalculation.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_TotalCases">[TotalCases]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CountryName">[CountryName]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_NewCases">[NewCases]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_TotalDeaths">[TotalDeaths]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_NewDeaths">[NewDeath]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_PercentageofNewCases">[PercentageOfNewCases]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_PercentageofDeath">[PercenatgeOfNewDeath]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Status">[Status]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Reason">[Reason]</OutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="Out_DT">[Out_DT]</InOutArgument>
+        <InOutArgument x:TypeArguments="njl:JObject" x:Key="Out_JSON">[FlowConfig]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_OutputFilePath">[OutUrlValue]</InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="arg_FilteredTable">[IsFilteredTable]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_FileLocation">[Out_FileLocation]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <If Condition="[IsFilteredTable=&quot;Success&quot;]" DisplayName="If Filtered table data is Sucess" sap:VirtualizedContainerService.HintSize="843.333333333333,608.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Succesfully filtered" sap:VirtualizedContainerService.HintSize="421.333333333333,446.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379.333333333333,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Filtering of COVID_19 completed Succesfully&quot;]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke COVID_19_CreateAutomationHubRequestDataFile workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,113.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="E5_Framework\\Covid Report_CreateAutomationHubRequestDataFile.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_Status">Completed</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_Reason">["Upload completed upload id : " + UploadID.ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_Type">[Type]</InArgument>
+              <OutArgument x:TypeArguments="njl:JArray" x:Key="out_ResultArray" />
+              <InOutArgument x:TypeArguments="scg:List(njl:JObject)" x:Key="io_MetaData">[MetaData]</InOutArgument>
+              <InOutArgument x:TypeArguments="njl:JObject" x:Key="io_SummaryResultData">[SummaryResultData]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_Country_Name">[CountryName]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_TotalCases">[TotalCases]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_NewCases">[NewCases]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_TotalDeaths">[TotalDeaths]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_NewDeaths">[NewDeath]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PercentageOfNewCases">[PercentageOfNewCases]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PercantageOfNewDeaths">[PercenatgeOfNewDeath]</InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT">[Out_DT]</InArgument>
+              <InOutArgument x:TypeArguments="njl:JObject" x:Key="arg_Config">[FlowConfig]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="arg_OutputFilePath">[OutUrlValue]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="arg_FileLocation">[Out_FileLocation]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <Sequence sap:VirtualizedContainerService.HintSize="379.333333333333,68" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="ui:GenericValue" Name="ResultRecordJSon" />
+              <Variable x:TypeArguments="x:String" Name="SummaryResultJson" />
+              <Variable x:TypeArguments="x:String" Name="SummaryResult" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="334,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="njl:JArray">[ResultArray]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="njl:JArray">[JArray.FromObject(MetaData)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="ui:GenericValue">[ResultRecordJSon]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="ui:GenericValue">[ResultArray.ToString(NewtonSoft.json.Formatting.None)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="njl:JObject">[SummaryResult1]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="njl:JObject">[New Newtonsoft.Json.Linq.JObject]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[SummaryResultJson]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[SummaryResult1.ToString(NewtonSoft.json.Formatting.None)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="334,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[SummaryResult]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">["Total Records Processed : " + SummaryResultData("Total").ToString + " / Success : " + SummaryResultData("Success").ToString + " / Failure : " + SummaryResultData("Failed").ToString + "  / Skipped : 0"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <euhe:End_Task_Execution DisplayName="Automation Hub Job Run End" sap:VirtualizedContainerService.HintSize="334,242" sap2010:WorkflowViewState.IdRef="End_Task_Execution_1" SummaryResultObject="[If(String.IsNullOrEmpty(SummaryResultJson),&quot;{}&quot;,SummaryResultJson)]" TaskResult="[ResultRecordJSon.ToString]" TaskResultSummary="[SummaryResult]" TaskRunStatus="Completed" __Prefix="[IO.Directory.GetCurrentDirectory]">
+              <euhe:End_Task_Execution.FailureReason>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" DisplayName="Literal&lt;String&gt;" Value="" />
+                </InArgument>
+              </euhe:End_Task_Execution.FailureReason>
+            </euhe:End_Task_Execution>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Auomation Hub Job Run Ended &quot;]" />
+          </Sequence>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Failed in Filtering the table data" sap:VirtualizedContainerService.HintSize="376,185.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Filtering of COVID_19 not completed&quot;]" />
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>
